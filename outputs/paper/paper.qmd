@@ -1,0 +1,116 @@
+---
+title: "TTC Subway Delay Prediction"
+author: 
+  Junwei Chen
+thanks: "Code and data are available at: [Github Repository](https://github.com/chendev001/tcc-subway-delay)"
+date: today
+date-format: long
+abstract: "With a focus on its importance in everyday urban life, this project studied and explored Toronto's subway delay issue. In order to advance scientific knowledge of urban transportation dynamics, this project develop predictive model for delay estimation, find patterns in the data, and determine the factors that contribute to delays. The paper presents the dataset sourced from open source opentorontodata, undertakes an exploratory data analysis to identify temporal patterns, and ends with the presentation of the predictive model."
+format: pdf
+number-sections: true
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(knitr)
+library(randomForest)
+```
+
+## Introduction
+
+The Toronto subway system plays a crucial role in the daily lives of residents and commuters. Understanding the factors contributing to delays is essential for improving the overall transit and commuting experience. In this paper, we studied and took a deep dive into the delay data, examining trends, identifying potential causes, and ultimately creating a predictive model for estimating delay durations.
+
+The paper is organized as follows: first, we present the dataset and its context; next, we perform an Exploratory Data Analysis to understand the delay patterns; finally, we introduce our predictive model and discuss its implications for the transit system.
+
+## Data
+
+TTC Subway & SRT Train Service Delay Data sourced from the Toronto Open Data [(data catalog)](https://open.toronto.ca/dataset/ttc-subway-delay-data/), providing a comprehensive record of subway delays over a particular period. This dataset is invaluable for assessing the reliability of the subway system and identifying potential areas for improvement. Information gathered between January 1, 2023, and December 31, 2023.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+setwd("~/Documents/R project")
+data <- read_csv("outputs/data/cleaned_data.csv")
+kable(data[1:5,1:7], "simple")
+```
+
+## Ethical and Statistical Considerations
+
+Before performing advanced analysis, it is crucial to acknowledge the ethical and statistical dimensions of the data. This paper consider issues related to data privacy, the representativeness of the sample, and the potential impact on various demographics. Statistical methods used in the analysis are carefully chosen to ensure the robustness of our findings.
+
+## Exploratory Data Analysis
+
+```{r, echo=FALSE, message=FALSE}
+#sort
+data$Day <- factor(data$Day, levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))
+data$Month <- factor(data$Month, levels = c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"))
+
+# calculate the average minimum delay for each combination of Month and Day
+average_data <- aggregate(`Min Delay` ~ Month + Day, data = data, FUN = mean)
+
+# ggplot2 plot
+ggplot(average_data, aes(x = Day, y = `Min Delay`, fill = Month)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +
+  labs(title = "Average Minimum Delay by Month and Day",
+       x = "Month",
+       y = "Average Delay (minutes)") +
+  theme_minimal()
+```
+
+```{r, echo=FALSE}
+# average delay on a daily basis
+daily_plot <- ggplot(data, aes(x = Day, y = `Min Delay`)) +
+  geom_bar(stat = "summary", fun = "mean", fill = "skyblue", color = "black") +
+  labs(title = "Average Delay on a Daily Basis",
+       x = "Day",
+       y = "Average Delay") +
+  theme_minimal()
+
+# average delay on a monthly basis
+monthly_plot <- ggplot(data, aes(x = Month, y = `Min Delay`)) +
+  geom_bar(stat = "summary", fun = "mean", fill = "lightgreen", color = "black") +
+  labs(title = "Average Delay on a Monthly Basis",
+       x = "Month",
+       y = "Average Delay") +
+  theme_minimal()
+
+# average delay on an hourly basis
+hourly_plot <- ggplot(data, aes(x = Hour, y = `Min Delay`)) +
+  geom_bar(stat = "summary", fun = "mean", fill = "lightcoral", color = "black") +
+  labs(title = "Average Delay on an Hourly Basis",
+       x = "Hour",
+       y = "Average Delay") +
+  theme_minimal()
+
+# Print or display the plots
+print(daily_plot)
+print(monthly_plot)
+print(hourly_plot)
+
+```
+
+In 2023, the biggest delay happens at 5 a.m., with an average delay of 3 minutes. It's interesting to consider that the train may leave the station at five in the morning and not leave until every passenger has boarded. It's also noteworthy that, although Sundays are supposed to be free days, there is a high average weekly train delay.
+
+## Predictive Model
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+# get model
+setwd("~/Documents/R project")
+rf_models <- readRDS("outputs/models/random_forest_model v1.rds")
+
+# get test data
+target = 'Min Delay'
+test_data <- read_csv("outputs/data/test_data.csv")
+test_data <- subset(test_data, select = -c(Date,Month))
+
+# get predictions on the test data
+predictions <- predict(rf_models, test_data[, -which(names(test_data) == target)])
+test_data['Min Delay Pred'] <- predictions
+kable(test_data[1:10,c('Min Delay', 'Min Gap', 'Min Delay Pred')], 'simple')
+```
+
+To enhance our understanding of subway delays, we develop a predictive model using machine learning techniques, Random Forest. Details of the model and its performance can be found om github repository. By isolating December data as test set, the model can achieve Mean Absolute Error of 1.222971 minutes and Root Mean Squared Error (RMSE) of 1.909541 minutes.
+
+## References
+
+References to R and relevant R packages (Wickham 2016; Xie 2023; Iannone et al. 2022) are included in the bibliography. Moreover, we acknowledge the Toronto Open Data initiative as the source of the subway delay dataset.
