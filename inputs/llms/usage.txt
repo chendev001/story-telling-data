@@ -1,0 +1,43 @@
+write 4 sentence abstract about
+The Toronto subway system plays a crucial role in the daily lives of residents and commuters. Understanding the factors contributing to delays is essential for improving the overall transit and commuting experience. In this paper, we studied and took a deep dive into the delay data, examining trends, identifying potential causes, and ultimately creating a predictive model for estimating delay durations. 
+The paper is organized as follows: first, we present the dataset and its context; next, we perform an Exploratory Data Analysis to understand the delay patterns; finally, we introduce our predictive model and discuss its implications for the transit system.
+ChatGPT
+This paper delves into the intricate dynamics of the Toronto subway system, recognizing its pivotal role in the daily routines of residents and commuters. A comprehensive understanding of the factors influencing delays is paramount for enhancing the overall efficiency of transit and commuting experiences. Through meticulous examination of delay data, this study uncovers trends, identifies potential causes, and culminates in the development of a predictive model capable of estimating delay durations. The paper unfolds in a structured manner, beginning with an introduction to the dataset and its context, followed by an insightful Exploratory Data Analysis aimed at unraveling delay patterns. The paper concludes by presenting a predictive model and discussing its potential implications for optimizing the city's transit system.
+
+User
+4 sentences and shorter
+ChatGPT
+This paper investigates the intricacies of Toronto's subway system, recognizing its vital role in daily life. By analyzing delay data, we uncover patterns, identify potential causes, and develop a predictive model for estimating delay durations. The structure of the paper includes an introduction to the dataset, an Exploratory Data Analysis to understand delay patterns, and the presentation of our predictive model with implications for transit optimization. This study contributes valuable insights for enhancing the efficiency of the city's transit experience.
+
+User
+dont use buzzwords
+ChatGPT
+This paper explores the nuances of Toronto's subway system, acknowledging its integral part in everyday life. Through a careful analysis of delay data, we reveal patterns, pinpoint potential causes, and devise a predictive model for estimating delays. The paper unfolds by introducing the dataset, delving into an Exploratory Data Analysis to grasp delay patterns, and presenting our predictive model with practical implications for transit improvement. This study provides meaningful insights to enhance the effectiveness of the city's transit experience.
+
+User
+use scienctific word
+ChatGPT
+This paper investigates the intricacies of Toronto's subway system, recognizing its pivotal role in daily urban mobility. Through a rigorous analysis of delay data, we unveil temporal patterns, pinpoint potential contributing factors, and formulate a predictive model for estimating delay durations. The paper follows a structured format, commencing with an exposition of the dataset and its contextual background. Subsequently, an in-depth Exploratory Data Analysis is conducted to unravel temporal delay patterns. The paper concludes by introducing a predictive model and discussing its implications for optimizing the city's transit system, contributing to the scientific understanding of urban transportation dynamics.
+
+User
+shorter
+ChatGPT
+This study examines Toronto's subway system, emphasizing its significance in daily urban life. By scrutinizing delay data, we identify patterns, isolate contributing factors, and develop a predictive model for delay estimation. The paper introduces the dataset, conducts an Exploratory Data Analysis to unveil temporal patterns, and concludes with the presentation of the predictive model, contributing scientifically to the understanding of urban transportation dynamics.
+
+User
+in bullet points
+ChatGPT
+Investigates Toronto's subway system, emphasizing its daily urban significance.
+Scrutinizes delay data to identify patterns and isolate contributing factors.
+Develops a predictive model for the estimation of delay durations.
+Presents the dataset, conducts an Exploratory Data Analysis, and concludes with the model's implications for urban transportation dynamics.
+User
+rephrase in more research manner, formal words without buzzword
+ChatGPT
+Examines the functional role of Toronto's subway system within the urban landscape.
+Conducts a meticulous analysis of delay data to discern temporal patterns and isolate causative factors.
+Formulates a predictive model aimed at estimating durations of delays within the subway network.
+Introduces the dataset, executes a systematic Exploratory Data Analysis, and concludes by discussing the model's implications for enhancing understanding in the field of urban transportation dynamics.
+
+
+
