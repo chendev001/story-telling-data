@@ -16,4 +16,4 @@ The repo is structured as:
 -   [scripts](scripts) contains the R scripts used to simulate, download and clean data.
 
 
-**Statement on LLM usage: The abstract was written with the help of Gpt 4.0 and the entire chat history is available in [inputs/llms/usage.txt[(inputs/llms/usage.txt]**
+**Statement on LLM usage: The abstract was written with the help of Gpt 4.0 and the entire chat history is available in[inputs/llms/usage.txt](inputs/llms/usage.txt)**
