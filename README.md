@@ -14,3 +14,6 @@ The repo is structured as:
 -   [outputs/data](outputs/data) contains the cleaned dataset that was constructed.
 -   [outputs/paper](outputs/paper) contains the files used to generate the paper, including the Quarto document and reference bibliography file, as well as the PDF of the paper. 
 -   [scripts](scripts) contains the R scripts used to simulate, download and clean data.
+
+
+**Statement on LLM usage: The abstract was written with the help of Gpt 4.0 and the entire chat history is available in [inputs/llms/usage.txt[(inputs/llms/usage.txt]**
